@@ -55,6 +55,7 @@
 
 	<haxelib name="hxCodec" />
 	<haxelib name="flixel" />
+	<haxelib name="extension-androidtools" if="android" />
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="discord_rpc" if="DISCORD_RPC" />
