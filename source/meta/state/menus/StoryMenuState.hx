@@ -114,15 +114,16 @@ class StoryMenuState extends MusicBeatState
 	
 	        #if android
 		addVirtualPad(LEFT_RIGHT, A_B);
+		addPadCamera();
 		#end
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		if (controls.LEFT_P)
+		if (controls.UI_LEFT_P)
 			switchSong(-1);
-		if (controls.RIGHT_P)
+		if (controls.UI_RIGHT_P)
 			switchSong(1);
 		if (controls.BACK)
 			Main.switchState(this, new MainMenuState());
