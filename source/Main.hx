@@ -29,6 +29,10 @@ import openfl.events.UncaughtErrorEvent;
 import sys.FileSystem;
 import sys.io.File;
 import sys.io.Process;
+#if android
+import android.content.Context;
+import android.os.Build;
+#end
 
 typedef CrashContent = {
 	var content:String;
@@ -63,14 +67,19 @@ class Main extends Sprite
 	public function new()
 	{
 		super();
+		#if android
+		if (VERSION.SDK_INT > 30)
+			Sys.setCwd(Path.addTrailingSlash(Context.getObbDir()));
+		else
+			Sys.setCwd(Path.addTrailingSlash(Context.getExternalFilesDir()));
+		#elseif ios
+		Sys.setCwd(System.documentsDirectory);
+		#end
 
-		/**
-			ok so, haxe html5 CANNOT do 120 fps. it just cannot.
-			so here i just set the framerate to 60 if its complied in html5.
-			reason why we dont just keep it because the game will act as if its 120 fps, and cause
-			note studders and shit its weird.
-		**/
-
+		#if mobile
+		Storage.copyNecessaryFiles();
+		#end
+		
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, killCua);
 
 		#if (html5 || neko)
@@ -86,8 +95,11 @@ class Main extends Sprite
 		// here we set up the base game
 		var gameCreate:FlxGame;
 		gameCreate = new FlxGame(gameWidth, gameHeight, mainClassState, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash);
-		addChild(gameCreate); // and create it afterwards
+		addChild(gameCreate);// and create it afterwards
 
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
 		// default game FPS settings, I'll probably comment over them later.
 		// addChild(new FPS(10, 3, 0xFFFFFF));
 
@@ -101,7 +113,7 @@ class Main extends Sprite
 		PlayerSettings.init();
 
 		infoCounter = new Overlay(0, 0);
-		addChild(infoCounter);
+		FlxG.game.addChild(infoCounter);
 	}
 
 	public static function framerateAdjust(input:Float)
