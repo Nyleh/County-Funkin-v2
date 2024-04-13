@@ -302,7 +302,7 @@ class OptionsSubstate extends MusicBeatSubState
 			//
 			updateHorizontalSelection();
 
-			if (controls.ACCEPT)
+			if (FlxG.keys.justPressed.ENTER)
 			{
 				submenuOpen = true;
 
