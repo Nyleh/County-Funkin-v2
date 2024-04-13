@@ -4,6 +4,7 @@ package;
 	Aw hell yeah! something I can actually work on!
  */
 import haxe.Json;
+import haxe.io.Path;
 import Main.CrashContent;
 import sys.Http;
 import flixel.FlxG;
