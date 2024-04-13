@@ -362,6 +362,11 @@ class PlayState extends MusicBeatState
 		dialogueHUD.bgColor.alpha = 0;
 		FlxG.cameras.add(dialogueHUD, false);
 
+		#if android
+		addAndroidControls();
+		androidc.visible = true;
+		#end
+
 		//
 		keysArray = [
 			copyKey(Init.gameControls.get('LEFT')[0]),
