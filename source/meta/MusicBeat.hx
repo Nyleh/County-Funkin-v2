@@ -73,11 +73,7 @@ class MusicBeatState extends FNFUIState
 			case DUO:
 				controls.setVirtualPadNOTES(androidc.vpad, DUO, NONE);
 			case HITBOX:
-			   if(ClientPrefs.hitboxmode != 'New'){
-				controls.setHitBox(androidc.hbox);
-				}else{
 				controls.setNewHitBox(androidc.newhbox);
-				}
 			default:
 		}
 
