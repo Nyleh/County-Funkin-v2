@@ -313,12 +313,7 @@ class OptionsSubstate extends MusicBeatSubState
 				});
 			}
 			else if (controls.BACK)
-				#if android
-				FlxTransitionableState.skipNextTransOut = true;
-				FlxG.resetState();
-				#else
 				close();
-				#end
 			        
 		}
 		else
