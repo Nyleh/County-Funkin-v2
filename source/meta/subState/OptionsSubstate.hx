@@ -5,6 +5,7 @@ import gameObjects.userInterface.vhsinfo.VHSInfo;
 import flixel.FlxBasic;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.keyboard.FlxKey;
@@ -108,6 +109,10 @@ class OptionsSubstate extends MusicBeatSubState
 		vignette.scrollFactor.set();
 		vignette.screenCenter();
 		add(vignette);
+	
+	        #if android
+		addVirtualPad(NONE, B);
+		#end
 	}
 
 	private var keyOptions:FlxTypedGroup<Alphabet>;
@@ -307,7 +312,13 @@ class OptionsSubstate extends MusicBeatSubState
 				});
 			}
 			else if (controls.BACK)
+				#if android
+				FlxTransitionableState.skipNextTransOut = true;
+				FlxG.resetState();
+				#else
 				close();
+				#end
+			        
 		}
 		else
 			subMenuControl();
