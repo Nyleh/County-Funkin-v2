@@ -42,7 +42,6 @@ class AndroidControlsMenu extends MusicBeatState
 		var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('menuDesat'));
 		bg.color = 0xFFea71fd;
 		bg.screenCenter();
-		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
 		vpad = new FlxVirtualPad(RIGHT_FULL, NONE, 0.75);
