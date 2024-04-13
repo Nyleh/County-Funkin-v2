@@ -17,8 +17,6 @@ import openfl.media.Sound;
 import openfl.system.System;
 import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenFlAssets;
-import sys.FileSystem;
-import sys.io.File;
 
 class Paths
 {
@@ -127,7 +125,7 @@ class Paths
 	public static function returnGraphic(key:String, ?library:String, ?textureCompression:Bool = false)
 	{
 		var path = getPath('images/$key.png', IMAGE, library);
-		if (FileSystem.exists(path))
+		if (OpenFlAssets.exists(path))
 		{
 			if (!currentTrackedAssets.exists(key))
 			{
