@@ -53,10 +53,6 @@ class AndroidControlsMenu extends MusicBeatState
 		vpad = new FlxVirtualPad(RIGHT_FULL, NONE, 0.75, ClientPrefs.globalAntialiasing);
 		vpad.alpha = 0;
 		add(vpad);
-
-		hbox = new FlxHitbox(0.75, ClientPrefs.globalAntialiasing);
-		hbox.visible = false;
-		add(hbox);
 		
 		newhbox = new FlxNewHitbox();
 		newhbox.visible = false;
@@ -183,16 +179,11 @@ class AndroidControlsMenu extends MusicBeatState
 
 		if (daChoice != "Hitbox")
 		{
-			hbox.visible = false;
 			newhbox.visible = false;
 		}
 		else
 		{
-		if(ClientPrefs.hitboxmode != 'New'){
-			hbox.visible = true;
-		     }else{
 		       newhbox.visible = true;
-		     }
 		}
 
 		if (daChoice != "Pad-Custom")
