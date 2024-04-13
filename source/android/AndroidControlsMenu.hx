@@ -10,6 +10,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import android.FlxNewHitbox;
 import android.AndroidControls.Config;
 import android.FlxVirtualPad;
+import meta.MusicBeat.MusicBeatState;
 
 using StringTools;
 
