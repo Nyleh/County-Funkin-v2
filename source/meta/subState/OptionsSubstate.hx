@@ -111,7 +111,8 @@ class OptionsSubstate extends MusicBeatSubState
 		add(vignette);
 	
 	        #if android
-		addVirtualPad(NONE, B);
+		addVirtualPad(NONE, A_B);
+		addPadCamera();
 		#end
 	}
 
