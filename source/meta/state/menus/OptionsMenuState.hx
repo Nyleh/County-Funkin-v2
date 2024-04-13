@@ -75,6 +75,7 @@ class OptionsMenuState extends MusicBeatState
 					['preferences', callNewGroup],
 					['appearance', callNewGroup],
 					['controls', openControlmenu],
+					['AndroidControls', qqqeb],
 					['exit', exitMenu]
 				]
 			],
@@ -162,6 +163,10 @@ class OptionsMenuState extends MusicBeatState
 		vhsinfo = new VHSInfo();
 		vhsinfo.camera = camINFO;
 		add(vhsinfo);
+	
+	        #if android
+		addVirtualPad(FULL, A_B);
+		#end
 	}
 
 	private var currentAttachmentMap:Map<Alphabet, Dynamic>;
@@ -592,12 +597,30 @@ class OptionsMenuState extends MusicBeatState
 			lockedMovement = true;
 			FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
 			{
+				#if android
+				removeVirtualPad();
+				#end
 				openSubState(new OptionsSubstate());
 				lockedMovement = false;
 			});
 		}
 	}
 
+	public function qqqeb()
+	{
+		//
+		if (controls.ACCEPT)
+		{
+			lockedMovement = true;
+			FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
+			{
+				Main.switchState(this, new android.AndroidControlsMenu());
+				lockedMovement = false;
+			});
+		}
+		//
+	}
+	
 	public function exitMenu()
 	{
 		//
