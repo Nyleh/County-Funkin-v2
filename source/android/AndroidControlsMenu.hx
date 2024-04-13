@@ -133,7 +133,7 @@ class AndroidControlsMenu extends MusicBeatState
 			save();
 			FlxTransitionableState.skipNextTransIn = true;
 			FlxTransitionableState.skipNextTransOut = true;
-			MusicBeatState.switchState(new options.OptionsState());
+			Main.switchState(this, new OptionsMenuState());
 		}
 		#end
 	}
