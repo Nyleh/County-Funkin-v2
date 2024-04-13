@@ -113,7 +113,7 @@ class Main extends Sprite
 		PlayerSettings.init();
 
 		infoCounter = new Overlay(0, 0);
-		FlxG.game.addChild(infoCounter);
+		addChild(infoCounter);
 	}
 
 	public static function framerateAdjust(input:Float)
